@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="kid")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\KidRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Kid
 {
@@ -42,6 +43,15 @@ class Kid
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function updateDady()
+    {
+        echo 'On update le papa !'."\n";
+        $this->getDad()->setChildUpdatedAt(new \DateTime());
     }
 
     /**
