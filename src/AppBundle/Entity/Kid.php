@@ -28,6 +28,11 @@ class Kid
      */
     private $description;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Dad")
+     */
+    private $dad;
+
 
     /**
      * Get id
@@ -62,5 +67,28 @@ class Kid
     {
         return $this->description;
     }
-}
 
+    /**
+     * Set dad
+     *
+     * @param \AppBundle\Entity\Dad $dad
+     *
+     * @return Kid
+     */
+    public function setDad(\AppBundle\Entity\Dad $dad = null)
+    {
+        $this->dad = $dad;
+
+        return $this;
+    }
+
+    /**
+     * Get dad
+     *
+     * @return \AppBundle\Entity\Dad
+     */
+    public function getDad()
+    {
+        return $this->dad;
+    }
+}
